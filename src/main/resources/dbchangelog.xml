@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1-datacenter" author="hhernandez">
+
+        <createTable tableName="estado_civil">
+            <column name="id_estado" type="integer" autoIncrement="true" incrementBy="1" startWith="1">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="descripcion" type="varchar(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="estados_inscripciones">
+            <column name="id_estado" type="integer" autoIncrement="true" incrementBy="1" startWith="1">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="codigo" type="integer">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="descripcion" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="grado">
+            <column name="id_grado" type="integer" autoIncrement="true" incrementBy="1" startWith="1">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="orden" type="integer">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="nombre" type="varchar(150)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_tipo_menu" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cantidad_cuotas" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="costo_inscripcon" type="decimal(10,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="costo_cuota" type="decimal(10,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_role" type="integer">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <createTable tableName="periodo">
+            <column name="id_periodo" type="integer" autoIncrement="true" incrementBy="1" startWith="1">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="descripcion" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fecha_inicial" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fecha_final" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="periodo_actual" type="boolean"/>
+        </createTable>
+        
+        <createTable tableName="profesion">
+            <column name="id_profesion" type="integer" autoIncrement="true" incrementBy="1" startWith="1">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="descripcion" type="varchar(150)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="seccion">
+            <column name="id_seccion" type="integer" autoIncrement="true" incrementBy="1" startWith="1">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="orden" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nombre" type="varchar(100)">
+               <constraints nullable="false"/>
+            </column>
+            <column name="capacidad" type="integer"/>
+            <column name="id_grado" type="integer">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="validaciones_inscripciones">
+            <column name="id_role" type="integer" autoIncrement="true" incrementBy="1" startWith="1">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="periodo" type="boolean"/>
+            <column name="nombres" type="boolean"/>
+            <column name="apellidos" type="boolean"/>
+            <column name="genero" type="boolean"/>
+            <column name="fecha_nacimiento" type="boolean"/>
+            <column name="telefono_casa" type="boolean"/>
+            <column name="telefono_celular" type="boolean"/>
+            <column name="correo_electronico" type="boolean"/>
+            <column name="profesion" type="boolean"/>
+            <column name="estado_civil" type="boolean"/>
+            <column name="ocupacion" type="boolean"/>
+            <column name="tipo_identificacion" type="boolean"/>
+            <column name="identificacion" type="boolean"/>
+            <column name="pais" type="boolean"/>
+            <column name="departamento" type="boolean"/>
+            <column name="municipio" type="boolean"/>
+            <column name="direccion" type="boolean"/>
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: datacenter
+  profiles:
+    active: development
+  cloud:
+    config:
+      uri: ${uri.config:http://config-server:5500}
